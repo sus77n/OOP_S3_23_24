@@ -5,12 +5,14 @@
 package cse203.assignment3;
 
 import static cse203.assignment3.CollegeStudent.sc;
+import java.util.Comparator;
 
 /**
  *
  * @author haing
  */
 public class Student {
+
     protected String StNumber;
     protected String name;
     protected int numOfCredit;
@@ -29,9 +31,14 @@ public class Student {
     public String getStNumber() {
         return StNumber;
     }
+
+    public String getName() {
+        return name;
+    }
     
-    public void Input()
-    {
+    
+
+    public void Input() {
         System.out.print("Enter student number: ");
         StNumber = sc.next();
         System.out.print("Enter student's name: ");
@@ -41,26 +48,31 @@ public class Student {
         System.out.print("Enter average: ");
         average = sc.nextDouble();
     }
-    
+
     public void Output(){
-        System.out.println("Student number: " +  StNumber);
-        System.out.println("Student name: " +  name);
+        System.out.println("Student number: " + StNumber);
+        System.out.println("Student name: " + name);
         System.out.println("Number of credits: " + numOfCredit);
         System.out.println("Average: " + average);
     }
     
-    public boolean CheckGraduation(){
-        if (numOfCredit < 100){
+
+    public boolean CheckGraduation() {
+        if (numOfCredit < 100) {
             return false;
         }
-        if (average < 5){
+        if (average < 5) {
             return false;
         }
         return true;
     }
 
-
-
-
-   
+        public static Comparator<Student> comparee = new Comparator<Student>() {
+        public int compare(Student a, Student b) {
+          if(a.getClass().toString().compareTo(b.getName().toString())==0)
+            return a.StNumber.compareTo(b.StNumber);
+          return a.getClass().toString().compareTo(b.getName().toString());
+        }
+    };
+            
 }

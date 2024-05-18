@@ -14,9 +14,10 @@ public class Assignment3 {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
+        int n = 0 ;
+        ManageStudent manage = new ManageStudent();
         while(n!=8){
-            System.out.println("Choose command: /n1. Add a new college student.\n" +
+            System.out.println("Choose command: \n1. Add a new college student.\n" +
                                 "2. Add a new university student.\n" +
                                 "3. Remove a student from the list with the student code entered from the keyboard.\n" +
                                 "4. Print student list.\n" +
@@ -25,9 +26,31 @@ public class Assignment3 {
                                 "6. Sort the student list ascending by Student type (College, university) and student code\n" +
                                 "7. Find student list by student's full name (Contains).\n" +
                                 "8. Exit");
-            
-            
             n = sc.nextInt();
+            
+            switch (n) {
+                case 1:
+                    manage.AddNewCollege();
+                    break;
+                case 2:
+                    manage.AddNewUniversity();
+                    break;
+                case 3:
+                    manage.removeBycode();
+                    break;
+                case 4:
+                    manage.PrintAll();
+                    break;
+                case 5:
+                    manage.PrintEliGradu();
+                    break;
+                case 6:
+                    manage.Sort();
+                    break;
+                case 7:
+                    manage.FindByName();
+                    break;
+            }
         }
     }
 }

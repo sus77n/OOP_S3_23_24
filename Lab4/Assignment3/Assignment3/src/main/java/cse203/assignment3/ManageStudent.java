@@ -4,6 +4,7 @@
  */
 package cse203.assignment3;
 
+import java.util.Collections;
 import java.util.Scanner;
 import java.util.Vector;
 
@@ -25,11 +26,13 @@ public class ManageStudent {
     public void AddNewCollege(){
         Student newC = new CollegeStudent();
         newC.Input();
+        v.add(newC);
     }
     
     public void AddNewUniversity(){
         Student newU = new UniversityStu();
         newU.Input();
+        v.add(newU);
     }
     
     public void removeBycode(){
@@ -38,6 +41,7 @@ public class ManageStudent {
         for (int i = 0; i < v.size(); i++) {
             if (v.get(i).getStNumber().equals(code)){
                 v.remove(i);
+                System.out.println("Success");
             }
         }
     }
@@ -58,5 +62,19 @@ public class ManageStudent {
         System.out.println("Number of eligible student: " + i+1);
     }
     
-    pu
+    public void FindByName(){
+        System.out.println("Enter name: ");
+        String findName = sc.next();
+        for (int i = 0; i < v.size(); i++) {
+            if (v.get(i).getName().equals(findName)){
+                v.get(i).Output();
+            }
+        }
+    }
+    
+    public void Sort(){
+        v.sort(Student.comparee);
+    }
+    
+
 }

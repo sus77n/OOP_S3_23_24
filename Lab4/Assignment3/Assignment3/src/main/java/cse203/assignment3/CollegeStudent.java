@@ -34,6 +34,7 @@ public class CollegeStudent extends Student {
         super.Output();
         System.out.println("Graduation exam score: " + gradExamScore);
     }
+
     
     @Override
     public boolean CheckGraduation(){

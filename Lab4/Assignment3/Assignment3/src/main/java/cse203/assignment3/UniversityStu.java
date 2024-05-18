@@ -38,6 +38,7 @@ public class UniversityStu extends Student{
         System.out.println("Thesis name: " + thesisName);
         System.out.println("Thesis score: " + thesisScore);
     }
+
     
     @Override
     public boolean CheckGraduation(){
