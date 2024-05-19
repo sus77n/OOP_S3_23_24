@@ -35,8 +35,6 @@ public class Student {
     public String getName() {
         return name;
     }
-    
-    
 
     public void Input() {
         System.out.print("Enter student number: ");
@@ -49,13 +47,12 @@ public class Student {
         average = sc.nextDouble();
     }
 
-    public void Output(){
+    public void Output() {
         System.out.println("Student number: " + StNumber);
         System.out.println("Student name: " + name);
         System.out.println("Number of credits: " + numOfCredit);
         System.out.println("Average: " + average);
     }
-    
 
     public boolean CheckGraduation() {
         if (numOfCredit < 100) {
@@ -67,12 +64,18 @@ public class Student {
         return true;
     }
 
-        public static Comparator<Student> comparee = new Comparator<Student>() {
+
+
+    public static Comparator<Student> compareClass = new Comparator<Student>() {
+        @Override
         public int compare(Student a, Student b) {
-          if(a.getClass().toString().compareTo(b.getName().toString())==0)
-            return a.StNumber.compareTo(b.StNumber);
-          return a.getClass().toString().compareTo(b.getName().toString());
+            if (a.getClass().toString().compareTo("class cse203.assignment3.CollegeStudent") == 0 && b.getClass().toString().compareTo("class cse203.assignment3.UniversityStu") == 0) {
+                return -1;
+            } else if (a.getClass().toString().compareTo("class cse203.assignment3.UniversityStu") == 0 && b.getClass().toString().compareTo("class cse203.assignment3.CollegeStudent") == 0){
+                return 1;
+            } else
+                return Integer.parseInt(a.StNumber) - Integer.parseInt(b.StNumber);
         }
     };
-            
+
 }

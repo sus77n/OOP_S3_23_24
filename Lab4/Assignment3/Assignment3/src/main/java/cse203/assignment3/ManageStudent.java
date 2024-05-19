@@ -73,7 +73,8 @@ public class ManageStudent {
     }
     
     public void Sort(){
-        v.sort(Student.comparee);
+        v.sort(Student.compareClass);
+        System.out.println("Success");
     }
     
 
