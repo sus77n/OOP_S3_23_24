@@ -4,6 +4,7 @@
  */
 package cse203.assignment1;
 
+import java.io.Serializable;
 import java.util.Comparator;
 import java.util.Scanner;
 
@@ -11,7 +12,7 @@ import java.util.Scanner;
  *
  * @author haing
  */
-public class Student {
+public class Student implements Serializable {
     protected String StNumber;
     protected String name;
     protected int numOfCredit;

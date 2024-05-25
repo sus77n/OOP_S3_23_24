@@ -53,13 +53,13 @@ public class ManageStudent {
     }
     
     public void PrintEliGradu(){
-        int i;
-        for (i = 0; i < v.size(); i++) {
+        int count = 0;
+        for (int i = 0; i < v.size(); i++) {
             if (v.get(i).CheckGraduation()){
                 v.get(i).Output();
             }
         }
-        System.out.println("Number of eligible student: " + i+1);
+        System.out.println("Number of eligible student: " + count);
     }
     
     public void FindByName(){
