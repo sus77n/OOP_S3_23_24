@@ -64,6 +64,25 @@ public class ManageStudent extends Vector<Student> {
     public void FindByName() {
         System.out.println("Enter name: ");
         String findName = sc.next();
+
+        if (this.size() == 0) {
+            System.out.println("Empty list");
+            return;
+        }
+        try {
+            FileOutputStream f = new FileOutputStream("D:\\Assignment1_Lab5\\result.dat");
+            ObjectOutputStream fo = new ObjectOutputStream(f);
+            for (Student st : this) {
+                if (st.getName().equals(findName)) {
+                    fo.writeObject(st);
+                }
+            }
+            fo.close();
+            f.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
         for (int i = 0; i < this.size(); i++) {
             if (this.get(i).getName().equals(findName)) {
                 this.get(i).Output();
@@ -106,14 +125,12 @@ public class ManageStudent extends Vector<Student> {
             FileInputStream fi = new FileInputStream(f);
             ObjectInputStream fo = new ObjectInputStream(fi);
             Student st;
-            while((st = (Student) (fo.readObject())) != null)
-            {
+            while ((st = (Student) (fo.readObject())) != null) {
                 this.add(st);
             }
             fo.close();
             fi.close();
-        }
-        catch(Exception e) {
+        } catch (Exception e) {
             System.out.println(e);
         }
     }
