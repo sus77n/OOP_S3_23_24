@@ -62,13 +62,10 @@ public class Staff {
 
     }
 
+    @Override
     public String toString() {
         return "ID number: " + IDnumber + "\nFullname: " + fullname + "\nDate of birth: " + dateOfBirth + "\n";
     }
     
-    static Comparator<Staff> comBySalary = new Comparator<Staff>(){
-        public int compare(Staff a, Staff b){
-            return (int)(b.salary - a.salary);
-        }
-    };
+    static Comparator<Staff> comBySalary = (Staff a, Staff b) -> (int)(b.salary - a.salary);
 }
