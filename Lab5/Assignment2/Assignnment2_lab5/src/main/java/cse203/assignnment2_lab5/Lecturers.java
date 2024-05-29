@@ -81,6 +81,7 @@ public class Lecturers extends Staff {
                 sc.nextLine();
             }
         }
+        CalculateSalary();
 
     }
 
@@ -92,5 +93,60 @@ public class Lecturers extends Staff {
         }
         n += "Salary: " + salary + "\n";
         return n;
+    }
+
+    @Override
+    public void Edit() {
+        System.out.println("What do you want to edit:\n 1.Fullname \n 2.Date of birth \n 3.ID number \n 4.Academic rank \n 5.Academic degree\n 6.Number of teaching years \n 7.Taught subjects");
+        int n = sc.nextInt();
+        switch (n) {
+            case 1:
+                System.out.print("Enter the new one: ");
+                fullname = sc.next();
+                break;
+            case 2:
+                System.out.print("Enter the new one: ");
+                dateOfBirth = sc.next();
+                break;
+            case 3:
+                System.out.print("Enter the new one: ");
+                IDnumber = sc.nextLong();
+                break;
+            case 4:
+                System.out.print("Enter the new one: ");
+                academicRank = sc.nextInt();
+                break;
+            case 5:
+                System.out.print("Enter the new one: ");
+                academicDegree = sc.next();
+                break;
+            case 6:
+                System.out.print("Enter the new one: ");
+                teachingYears = sc.nextInt();
+                CalculateSalary();
+                break;
+            case 7:
+                System.out.print("The number of taught subjects is remain ?\n 0 (no) \n 1(yes): ");
+                int temp = sc.nextInt();
+                if (temp == 0) {
+                    System.out.print("Enter the index of taught subject you want to change(from 1 to ...): ");
+                    int index = sc.nextInt();
+                    System.out.print("Enter the new subject: ");
+                    String newSub = sc.next();
+                    taughtSubject.add(index - 1, newSub);
+                } else {
+                    System.out.print("Do you want to remove subject(0) or add more subject(1): ");
+                    int com = sc.nextInt();
+                    if (com == 0) {
+                        System.out.print("Enter the index of taught subject you want to remove(from 1 to ...): ");
+                        int indexR = sc.nextInt();
+                        taughtSubject.remove(indexR - 1);
+                    } else {
+                        System.out.print("Enter new subject: ");
+                        taughtSubject.add(sc.next());
+                    }
+                    CalculateSalary();
+                }
+        }
     }
 }

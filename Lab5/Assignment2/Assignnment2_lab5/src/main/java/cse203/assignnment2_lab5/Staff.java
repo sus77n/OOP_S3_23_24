@@ -4,6 +4,7 @@
  */
 package cse203.assignnment2_lab5;
 
+import java.util.Comparator;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -13,9 +14,9 @@ import java.util.Scanner;
  */
 public class Staff {
 
-    private String fullname;
-    private String dateOfBirth;
-    private long IDnumber;
+    protected String fullname;
+    protected String dateOfBirth;
+    protected long IDnumber;
     protected double salary;
     Scanner sc = new Scanner(System.in);
 
@@ -29,15 +30,25 @@ public class Staff {
     public Staff() {
     }
 
+    public long getIDnumber() {
+        return IDnumber;
+    }
+
+    
     public void CalculateSalary() {
 
+    }
+    
+    public void Edit(){
+        
     }
 
     public void Input() {
         System.out.print("Enter Full name: ");
-        fullname = sc.next();
+        fullname = sc.nextLine();
         System.out.print("Enter date of birth:  ");
-        dateOfBirth = sc.next();
+        dateOfBirth = sc.nextLine();
+
         while (true) {
             try {
                 System.out.print("Enter id number: ");
@@ -54,4 +65,10 @@ public class Staff {
     public String toString() {
         return "ID number: " + IDnumber + "\nFullname: " + fullname + "\nDate of birth: " + dateOfBirth + "\n";
     }
+    
+    static Comparator<Staff> comBySalary = new Comparator<Staff>(){
+        public int compare(Staff a, Staff b){
+            return (int)(b.salary - a.salary);
+        }
+    };
 }

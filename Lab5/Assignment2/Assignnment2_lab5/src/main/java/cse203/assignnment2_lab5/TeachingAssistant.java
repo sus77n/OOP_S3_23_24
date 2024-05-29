@@ -40,12 +40,36 @@ public class TeachingAssistant extends Staff {
                 sc.nextLine();
             }
         }
-
+        CalculateSalary();
     }
 
     public String toString() {
         String n = super.toString();
         n = n + "Number of subject: " + numOfSubs + "\nSalary: " + salary + "\n";
         return n;
+    }
+    
+    public void Edit(){
+        System.out.println("What do you want to edit:\n 1.Fullname \n 2.Date of birth \n 3.ID number \n 4.Number of subject assist" );
+         int n = sc.nextInt();
+        switch (n) {
+            case 1:
+                System.out.print("Enter the new one: ");
+                fullname = sc.next();
+                break;
+            case 2:
+                System.out.print("Enter the new one: ");
+                dateOfBirth = sc.next();
+                break;
+            case 3:
+                System.out.print("Enter the new one: ");
+                IDnumber = sc.nextLong();
+                break;
+            case 4:
+                System.out.print("Enter the new one: ");
+                numOfSubs = sc.nextInt();
+                CalculateSalary();
+                break;
+        }
     }
 }
