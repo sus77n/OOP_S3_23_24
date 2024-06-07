@@ -118,7 +118,7 @@ public class MainFrameCDstore extends JFrame {
     private void AddaCD() {
         String title = titleTextField.getText();
         if (title.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Please fill title");
+            JOptionPane.showMessageDialog(null, "Please fill title", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
         String collectionCD = collection.getSelectedItem().toString();
