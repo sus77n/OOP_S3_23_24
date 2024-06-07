@@ -22,6 +22,15 @@ public class ManageCD {
     public ManageCD(List<ObCD> listCD) {
         this.listCD = listCD;
     }
+
+    public List<ObCD> getListCD() {
+        return listCD;
+    }
+
+    public void setListCD(List<ObCD> listCD) {
+        this.listCD = listCD;
+    }
+    
     
     public void AddCD(){
         Scanner sc = new Scanner(System.in);
