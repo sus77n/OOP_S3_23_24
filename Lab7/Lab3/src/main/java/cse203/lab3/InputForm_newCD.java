@@ -20,7 +20,6 @@ public class InputForm_newCD extends javax.swing.JDialog {
         initComponents();
     }
 
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -201,7 +200,11 @@ public class InputForm_newCD extends javax.swing.JDialog {
             double price = Double.parseDouble(priceCD);
             int yearRelease = Integer.parseInt(yearReleaseCD);
             newCD = new ObCD(id, title, collectionCD, typeCD, price, yearRelease);
-            JOptionPane.showMessageDialog(null, "Succesful", "Success", JOptionPane.INFORMATION_MESSAGE);
+            if (ManageCD.AddCD(newCD) == false) {
+                JOptionPane.showMessageDialog(null, "ID exists", "Error", JOptionPane.ERROR_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(null, "Successful");
+            }
             btnClearActionPerformed(evt);
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "ID, price, year must be numbers, please try again", "Error", JOptionPane.ERROR_MESSAGE);
@@ -266,13 +269,12 @@ public class InputForm_newCD extends javax.swing.JDialog {
             }
         });
     }
-    
     private ObCD newCD;
 
     public ObCD getNewCD() {
         return newCD;
     }
-    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField IDTextField;

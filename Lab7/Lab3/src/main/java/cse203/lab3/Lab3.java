@@ -10,7 +10,7 @@ import java.util.Scanner;
  * @author haing
  */
 public class Lab3 {
-
+        
     public static void main(String[] args) {
        MainFrame_CDstore_update mf = new MainFrame_CDstore_update();
        mf.setVisible(true);

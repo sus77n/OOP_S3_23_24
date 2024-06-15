@@ -4,24 +4,29 @@
  */
 package cse203.lab3;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author haing
  */
 public class ManageCD {
-    private List<ObCD> listCD = new ArrayList<>();
+    private static List<ObCD> listCD = new ArrayList<>();
 
-    public List<ObCD> getListCD() {
+    public static List<ObCD> getListCD() {
         return listCD;
     }
 
-    public void setListCD(List<ObCD> listCD) {
-        this.listCD = listCD;
+    public static void setListCD(List<ObCD> listCD) {
+        ManageCD.listCD = listCD;
     }
 
     public ManageCD() {
@@ -31,7 +36,7 @@ public class ManageCD {
         this.listCD = listCD;
     }
     
-    public boolean AddCD(ObCD newCD){
+    public static boolean AddCD(ObCD newCD){
         for (ObCD obCD : listCD) {
             if (obCD.getId() == newCD.getId()) {
                 return false;
@@ -40,63 +45,58 @@ public class ManageCD {
         listCD.add(newCD);
         return true;
     }
-    
-    public void SearchByTitle(){
-        Scanner sc = new Scanner(System.in);
-        StringBuilder sb = new StringBuilder();
+    public static boolean DeleteByTitle(String deTitle){
         boolean flag = false;
-        System.out.println("Input tilte: ");
-        String searchTi = sc.next();
         for (int i = 0; i < listCD.size(); i++) {
-            if(listCD.get(i).getTitle().equals(searchTi)){
-                sb.append(listCD.get(i).toString()).append("\n");
+            if(listCD.get(i).getTitle().equals(deTitle)){
+                listCD.remove(i);
                 flag = true;
             }
         }
-            if(!flag){
-                sb.append("not found");
+        return flag;
+    }
+    public static List SearchByTitle(String Stitle){
+        List<ObCD> list = new ArrayList<>();
+        for (int i = 0; i < listCD.size(); i++) {
+            if(listCD.get(i).getTitle().equals(Stitle)){
+                list.add(listCD.get(i));
             }
-        System.out.print(sb);
+        }
+        return list;
     }
     
-     public void SearchByCollection(){
-        Scanner sc = new Scanner(System.in);
-        StringBuilder sb = new StringBuilder();
-        boolean flag = false;
-        System.out.println("Input collection: ");
-        String searchCo = sc.next();
+     public static List SearchByCollection(String Scollection){
+         List<ObCD> list = new ArrayList<>();
         for (int i = 0; i < listCD.size(); i++) {
-            if(listCD.get(i).getCollection().equals(searchCo)){
-                sb.append(listCD.get(i).toString()).append("\n");
-                flag = true;
+            if(listCD.get(i).getCollection().equals(Scollection)){
+               list.add(listCD.get(i));
             }
         }
-                    if(!flag){
-                sb.append("not found");
-            }
-        System.out.print(sb);
+       return list;
     }
      
-     public void SearchByType(){
-        Scanner sc = new Scanner(System.in);
-        boolean flag = false;
-        StringBuilder sb = new StringBuilder();
-        System.out.println("Input type: ");
-        String searchType = sc.next();
+     public static List SearchByType(String Stype){
+        List<ObCD> list = new ArrayList<>();
         for (int i = 0; i < listCD.size(); i++) {
-            if(listCD.get(i).getType().equals(searchType)){
-                sb.append(listCD.get(i).toString()).append("\n");
-                flag = true;
+            if(listCD.get(i).getType().equals(Stype)){
+               list.add(listCD.get(i));
             }
         }
-                    if(!flag){
-                sb.append("not found");
+       return list;
+    }
+     
+     public static List SearchByPrice(Double SPrice){
+        List<ObCD> list = new ArrayList<>();
+        for (int i = 0; i < listCD.size(); i++) {
+            if(listCD.get(i).getType().equals(SPrice)){
+               list.add(listCD.get(i));
             }
-        System.out.print(sb);
+        }
+       return list;
     }
     
     
-    public void Delete(){
+    public static void Delete(){
         Scanner sc = new Scanner(System.in);
         System.out.println("Input id: ");
         long deletedId = sc.nextLong();
@@ -108,7 +108,7 @@ public class ManageCD {
         listCD.remove(index);
     }
     
-    public void Edit(){
+    public static void Edit(){
         Scanner sc = new Scanner(System.in);
         System.out.println("Input id: ");
         long editId = sc.nextLong();
@@ -122,13 +122,13 @@ public class ManageCD {
         }
     }
     
-    public void DisplayAll(){
+    public static void DisplayAll(){
         for (ObCD obCD : listCD) {
             System.out.println(obCD.toString());
         }
     }
     
-    public void sortCD(){
+    public static void sortCD(){
         listCD.sort(ObCD.compareAboutID);   
     }
     

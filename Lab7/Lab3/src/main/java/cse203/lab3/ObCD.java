@@ -4,6 +4,7 @@
  */
 package cse203.lab3;
 
+import java.io.Serializable;
 import java.util.Comparator;
 import java.util.Scanner;
 
@@ -11,7 +12,7 @@ import java.util.Scanner;
  *
  * @author haing
  */
-public class ObCD {
+public class ObCD implements Serializable {
     private long id;
     private String type;
     private String collection;
@@ -19,7 +20,7 @@ public class ObCD {
     private double price;
     private int year;
 
-    public ObCD(long id, String type, String collection, String title, double price, int year) {
+    public ObCD(long id, String title, String collection, String type, double price, int year) {
         this.id = id;
         this.type = type;
         this.collection = collection;
